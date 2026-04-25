@@ -21,6 +21,9 @@ if [ ! -L /root/.ollama/models ]; then
     echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Linked /root/.ollama/models -> /workspace/ollama" | tee -a "$LOG"
 fi
 
+# Install pciutils so Ollama installer can detect the GPU (needed for CUDA build)
+apt-get install -y pciutils > /dev/null 2>&1
+
 # Use cached Ollama binary from network volume (fast, no DNS needed)
 mkdir -p /workspace/bin
 if [ -f /workspace/bin/ollama ]; then
