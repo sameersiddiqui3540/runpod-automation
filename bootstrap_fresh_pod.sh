@@ -140,3 +140,6 @@ du -sh /workspace/* 2>/dev/null | tee -a "$LOG"
 echo "" | tee -a "$LOG"
 echo "Next time: deploy pod with 'bash /workspace/startup.sh' as start command." | tee -a "$LOG"
 echo "Pod boots in ~2 min. Ollama serves qwen3.6:35b-a3b on port 8000." | tee -a "$LOG"
+
+# Keep container alive — without this the bootstrap exits, pod restarts, and bootstrap runs again
+sleep infinity
