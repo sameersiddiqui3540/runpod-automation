@@ -65,7 +65,7 @@ done
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Warming up model — loading qwen3.6:35b-a3b into VRAM..." | tee -a "$LOG"
 curl -s http://localhost:8000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"model":"qwen3.6:35b-a3b","messages":[{"role":"user","content":"hi"}],"stream":false,"think":false,"options":{"num_predict":1}}' \
+  -d '{"model":"qwen3.6:35b-a3b","messages":[{"role":"user","content":"hi"}],"stream":false,"think":false,"options":{"num_predict":1},"keep_alive":-1}' \
   >> "$LOG" 2>&1
 echo "" >> "$LOG"
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Model warm-up complete. READY." | tee -a "$LOG"
